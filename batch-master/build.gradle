@@ -1,0 +1,72 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.3.RELEASE'
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+jar {
+    baseName = 'batch-master'
+    version = '0.0.1'
+}
+
+repositories {
+    jcenter()
+
+    maven { url 'https://repo.spring.io/release' }
+    maven { url 'https://repo.spring.io/snapshot' }
+    maven { url 'https://repo.spring.io/milestone' }
+
+    maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'http://repo.maven.apache.org/maven2' }
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+
+    compile("org.springframework.boot:spring-boot-autoconfigure")
+//    compile("org.springframework.boot:spring-boot-loader-tools")
+//    compile("org.springframework.boot:spring-boot-actuator")
+
+//    compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-logging")
+    compile("org.springframework.boot:spring-boot-starter-aop")
+
+//    compile("org.springframework.boot:spring-boot-starter-jetty")
+
+    compile("org.springframework.boot:spring-boot-starter-batch")
+    compile("org.springframework.batch:spring-batch-infrastructure")
+    compile("org.springframework.batch:spring-batch-integration")
+
+    compile("mysql:mysql-connector-java")
+
+    compile("org.springframework.boot:spring-boot-starter-integration")
+    compile("org.springframework.integration:spring-integration-jms")
+    compile("org.springframework.integration:spring-integration-amqp")
+
+    compile("org.apache.activemq:activemq-broker:5.11.1")
+
+//    compile("org.springframework.boot:spring-boot-starter-amqp")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}

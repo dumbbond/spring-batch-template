@@ -1,0 +1,49 @@
+server:
+  port: 8090
+#  trace: true
+
+logging:
+  file: ./logs/admin.log
+  level:
+    kr.co.kware: INFO
+
+batch.job.configuration.file.dir: target/config
+batch.job.service.reaper.interval: 60000
+
+spring:
+#  main.web_environment: false
+
+  batch:
+    initializer.enabled: false
+    grid.size: 2 # slave size.
+    admin.job.configuration.file.dir: target/config # /META-INF/spring/batch/bootstrap/integration/configuration-context.xml
+    admin.job.service.reaper.interval: 60000
+  
+  datasource:
+    platform: mysql
+    initialize: false
+
+    dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+    url: jdbc:mysql://kware.iptime.org:7777/internship
+    driverClassName: com.mysql.jdbc.Driver
+    username: kware
+    password: kware1234
+    cachePrepStmts: true
+    prepStmtCacheSize: 250
+    prepStmtCacheSqlLimit: 2048
+    useServerPrepStmts: true
+
+  jpa:
+    database: MYSQL
+    openInView: false
+    show_sql: true
+    generate-ddl: false
+    hibernate:
+        ddl-auto: create-drop
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+  freemarker:
+    path:
+    checkTemplateLocation: false

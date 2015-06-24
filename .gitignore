@@ -1,0 +1,31 @@
+# SVN
+.svn/
+
+# Gradle
+.gradle/
+build/
+
+# Java
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclips
+.metadata
+.project
+.classpath
+.settings/
+target/
+
+# IDE
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# MacOSX
+.DS_Store
+
